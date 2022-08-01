@@ -14,6 +14,7 @@ app.use(express.json());
 
 app.use('/api/estaciones', require('./routes/estacion'));
 app.use('/api/sensores', require('./routes/sensor'));
+app.use('/api/alertas', require('./routes/alerta'));
 
 
 app.listen(4000, () => {

@@ -75,7 +75,7 @@ exports.obtenerSensores = async (req, res) => {
 
 exports.actualizarSensor = async (req, res) => {
     try {
-        const { name, location, status } = req.body;
+        const { timearrive, CONDUCTIVITY, PH, TEMPERATURE, TSS, station } = req.body;
 
         let sensor = await Sensor.findById(req.params.id);
 
@@ -83,9 +83,12 @@ exports.actualizarSensor = async (req, res) => {
             res.status(404).json({ msg: 'No existe el sensor' });
         }
 
-        sensor.name = name;
-        sensor.location = location;
-        sensor.status = status;
+        sensor.timearrive = timearrive;
+        sensor.CONDUCTIVITY = CONDUCTIVITY;
+        sensor.PH = PH;
+        sensor.TEMPERATURE = TEMPERATURE;
+        sensor.TSS = TSS;
+        sensor.statin = station;
 
         sensor = await Sensor.findOneAndUpdate({ _id: req.params.id },sensor, { new: true} );
         res.json(sensor);
